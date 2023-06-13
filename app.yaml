@@ -1,0 +1,10 @@
+runtime: nodejs18
+
+env_variables:
+  MYSQL_USER: root
+  MYSQL_PASSWORD: admin123
+  MYSQL_DATABASE: db_adventour
+  INSTANCE_CONNECTION_NAME: capstone-project-387109:asia-southeast2:adventour
+
+beta_settings:
+  cloud_sql_instances: capstone-project-387109:asia-southeast2:adventour

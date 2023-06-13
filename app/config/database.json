@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "admin123",
+    "database": "db_adventour",
+    "host": "34.101.151.99",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "admin123",
+    "database": "db_adventour",
+    "host": "34.101.151.99",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "admin123",
+    "database": "db_adventour",
+    "host": "34.101.151.99",
+    "dialect": "mysql"
+  }
+}
