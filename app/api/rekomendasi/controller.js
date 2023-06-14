@@ -1,3 +1,4 @@
+const axios = require('axios');
 const { gunung } = require('../../db/models');
 
 module.exports = {
