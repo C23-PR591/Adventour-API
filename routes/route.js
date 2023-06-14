@@ -16,6 +16,7 @@ const { getAllStory, getStoryById, addNewStory } = require('../app/api/story/con
 const { uploadFile } = require('../middleware/cloudStorage');
 
 const multer = require('multer');
+const { showRecommend } = require('../app/api/rekomendasi/controller');
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {
@@ -45,5 +46,9 @@ router.get('/feedback/:gunungId', getAllFeedBasedOnGunung);
 router.get('/story', auth, getAllStory);
 router.get('/story/:id', getStoryById);
 router.post('/story/add', auth, upload.single('photoUrl'), addNewStory);
+
+// rekomendasi
+
+router.get('/recommendation', auth, showRecommend);
 
 module.exports = router;
