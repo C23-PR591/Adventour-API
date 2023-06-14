@@ -24,6 +24,12 @@ module.exports = {
       pengalaman: {
         type: Sequelize.INTEGER,
       },
+      level: {
+        type: Sequelize.INTEGER,
+      },
+      photoProfile: {
+        type: Sequelize.STRING,
+      },
       email: {
         type: Sequelize.STRING,
       },

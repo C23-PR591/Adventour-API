@@ -16,6 +16,15 @@ module.exports = {
         return res.status(403).json({ message: 'Email Registered' });
       }
 
+      let level;
+      if (pengalaman <= 5) {
+        level = 1;
+      } else if (pengalaman <= 10) {
+        level = 2;
+      } else {
+        level = 3;
+      }
+
       const User = await user.create({
         nama,
         jenisKelamin,
