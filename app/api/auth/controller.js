@@ -60,7 +60,7 @@ module.exports = {
             {
               user: {
                 id: checkUser.id,
-                name: checkUser.nama,
+                nama: checkUser.nama,
                 email: checkUser.email,
                 jenisKelamin: checkUser.jenisKelamin,
                 umur: checkUser.umur,
