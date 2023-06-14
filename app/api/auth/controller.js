@@ -66,6 +66,7 @@ module.exports = {
                 umur: checkUser.umur,
                 domisili: checkUser.domisili,
                 pengalaman: checkUser.pengalaman,
+                level: checkUser.level,
               },
             },
             'secret'
