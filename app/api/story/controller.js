@@ -17,18 +17,15 @@ const folderName = 'img-story'; //nama-folder
 module.exports = {
   getAllStory: async (req, res, next) => {
     try {
-      const Story = await story.findAll({
-        // where: {
-        //   user: req.user.id,
-        // },
-      });
+      const Story = await story.findAll();
 
       res.status(200).json({
         message: 'Success get All My Story',
         data: Story,
       });
     } catch (error) {
-      next(error);
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
     }
   },
   getStoryById: async (req, res, next) => {
@@ -42,7 +39,8 @@ module.exports = {
         data: Story,
       });
     } catch (error) {
-      next(error);
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
     }
   },
   getDataLocationGunung: async (req, res) => {
