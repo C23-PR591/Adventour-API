@@ -14,8 +14,9 @@ const { userFeedback, getAllFeedBasedOnGunung, getAllFeedback } = require('../ap
 const { auth } = require('../middleware/auth');
 const { getAllStory, getStoryById, addNewStory } = require('../app/api/story/controller');
 
-const multer = require('multer');
 const { showRecommend } = require('../app/api/rekomendasi/controller');
+
+const multer = require('multer');
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: {

@@ -18,9 +18,9 @@ module.exports = {
   getAllStory: async (req, res, next) => {
     try {
       const Story = await story.findAll({
-        where: {
-          user: req.user.id,
-        },
+        // where: {
+        //   user: req.user.id,
+        // },
       });
 
       res.status(200).json({
@@ -45,44 +45,6 @@ module.exports = {
       next(error);
     }
   },
-  addNewStory: async (req, res) => {
-    try {
-      const { caption, gunungId } = req.body;
-
-      const file = req.file;
-
-      // Buat nama file yang unik
-      // const fileName = `${Date.now()}-${file.originalname}`;
-
-      // Upload file ke Cloud Storage      
-      const destination = `${folderName}/${Date.now()}-${file.originalname}`;
-      const blob = bucket.file(destination);
-
-      const blobStream = blob.createWriteStream();
-      blobStream.on('error', (error) => {
-        console.error(error);
-        res.status(500).json({ message: 'Failed to upload image' });
-      });
-      blobStream.on('finish', async () => {
-        // Simpan data posting ke database
-        const posting = await story.create({
-          userId: req.user.id,
-          caption,
-          gunungId,
-          photoUrl: `https://storage.googleapis.com/${bucketName}/${folderName}/${destination}`,
-        });
-
-        res.status(201).json({
-          message: 'Data posting berhasil disimpan',
-          data: posting,
-        });
-      });
-      blobStream.end(file.buffer);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Server error' });
-    }
-  },
   getDataLocationGunung: async (req, res) => {
     try {
       const Gunung = await gunung.findAll({
@@ -96,6 +58,43 @@ module.exports = {
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Terjadi kesalahan pada server' });
+    }
+  },
+  addNewStory: async (req, res) => {
+    try {
+      const { caption, gunungId } = req.body;
+
+      const file = req.file;
+
+      // Buat nama file yang unik
+      const destination = `${folderName}/${Date.now()}-${file.originalname}`;
+
+      // Upload file ke Cloud Storage
+      const blob = bucket.file(destination);
+      const blobStream = blob.createWriteStream();
+      blobStream.on('error', (error) => {
+        console.error(error);
+        res.status(500).json({ message: 'Failed to upload image' });
+      });
+      blobStream.on('finish', async () => {
+        // Simpan data posting ke database
+        const posting = await story.create({
+          userId: req.user.id,
+          caption,
+          gunungId,
+          photoUrl: `https://storage.googleapis.com/${bucketName}/${destination}`,
+          // photoUrl: `https://storage.googleapis.com/${bucketName}/${fileName}`,
+        });
+
+        res.status(201).json({
+          message: 'Data posting berhasil disimpan',
+          data: posting,
+        });
+      });
+      blobStream.end(file.buffer);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
     }
   },
 };
