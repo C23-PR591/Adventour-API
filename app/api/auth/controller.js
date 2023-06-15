@@ -31,6 +31,7 @@ module.exports = {
         umur,
         domisili,
         pengalaman,
+        level,
         email,
         password: bcrypt.hashSync(password, 10),
       });
