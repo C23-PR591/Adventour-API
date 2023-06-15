@@ -26,7 +26,7 @@ const upload = multer({
 // User
 router.post('/auth/signup', signup);
 router.post('/auth/signin', signin);
-router.get('/auth/user', getDataUser);
+router.get('/auth/user', auth, getDataUser);
 
 // Gunung
 router.get('/gunung', getAllGunung);
