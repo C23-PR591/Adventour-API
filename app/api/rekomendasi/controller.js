@@ -17,10 +17,6 @@ module.exports = {
           level,
         });
 
-        console.log(response);
-
-        // const resultRecommendation = response.data;
-
         const recommendedIds = response.data.res; // Ambil id gunung yang direkomendasikan dari respons FastAPI
 
         // Mengambil data gunung berdasarkan daftar ID
