@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { signup, signin } = require('../app/api/auth/controller');
+const { signup, signin, getDataUser } = require('../app/api/auth/controller');
 const {
   getAllGunung,
   searchGunung,
@@ -13,7 +13,6 @@ const {
 const { userFeedback, getAllFeedBasedOnGunung, getAllFeedback } = require('../app/api/feedback/controller');
 const { auth } = require('../middleware/auth');
 const { getAllStory, getStoryById, addNewStory } = require('../app/api/story/controller');
-const { uploadFile } = require('../middleware/cloudStorage');
 
 const multer = require('multer');
 const { showRecommend } = require('../app/api/rekomendasi/controller');
@@ -27,6 +26,7 @@ const upload = multer({
 // User
 router.post('/auth/signup', signup);
 router.post('/auth/signin', signin);
+router.get('/auth/user', getDataUser);
 
 // Gunung
 router.get('/gunung', getAllGunung);

@@ -85,4 +85,17 @@ module.exports = {
       next(error);
     }
   },
+  getDataUser: async (req, res) => {
+    try {
+      const dataUser = req.user;
+
+      res.status(200).json({
+        message: 'Success get data User login',
+        data: dataUser,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Internal server errors' });
+    }
+  },
 };
