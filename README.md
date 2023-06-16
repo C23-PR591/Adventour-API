@@ -1,6 +1,10 @@
 <h1 align="center">Backend - AdvenTour</h1>
 <p align="center">Capstone Project | Product Based | AdvenTour</p>
 
+# API Documentation
+
+## Endpoint Routes
+
 | Route                          | HTTP Method | Description                                   |
 | ------------------------------ | ----------- | --------------------------------------------- |
 | /auth/signup                   | POST        | Registration new user                         |
